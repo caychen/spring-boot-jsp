@@ -1,0 +1,29 @@
+Springboot集成jsp
+步骤：
+	1、在pom.xml中添加servlet-api，jstl，tomcat-embed-jasper依赖
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+	2、在application.yml中添加mvc配置
+		spring.mvc.view.prefix=/WEB-INF/jsp/ #页面默认前缀目录
+		spring.mvc.view.suffix=.jsp #页面默认后缀
+		
+	3、在/WEB-INF/jsp/下新建controller返回的对应的jsp页面
+	
+问题：Unable to start EmbeddedWebApplicationContext due to missing EmbeddedServletContainerFactory bean.
+原因：spring-boot-starter-tomcat下载包不完整
+解决方案：删除后再update maven
